@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0e68c;
+            padding: 50px;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1 {
+            color: #ff4500;
+        }
+        p {
+            font-size: 1.2em;
+        }
+        img {
+            max-width: 50%; /* Adjust the max width */
+            height: auto;
+            margin-top: 30px;
+            display: none; /* Hide the image initially */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .puzzle {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid #ff4500;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        .puzzle input {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 1em;
+        }
+        .puzzle button {
+            padding: 5px 10px;
+            font-size: 1em;
+            background-color: #ff4500;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .reward-container {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday!</h1>
+        <p>Төрсөн өдрийн мэнд, Эмүжин! Монгол Улсын иргэн болж байгаад чинь баяр хүргэе!</p>
+        
+        <div class="puzzle">
+            <h2>Дууны үгийг таагаарай</h2>
+            <p>Зүрхэн хэлбэрт <strong id="missing-word-1">-----</strong></p>
+            <p>Зуун жил хоцорч <strong id="missing-word-2">-----</strong></p>
+            <input type="text" id="guess1" placeholder="Нөхөх эхний үг чинь">
+            <input type="text" id="guess2" placeholder="Нөхөх хоёр дох үг чинь">
+            <button onclick="checkAnswers()">Submit</button>
+            <p id="result"></p>
+        </div>
+
+        <div class="reward-container">
+            <img id="rewardImage" src="cake.jpeg" alt="Төрсөн өдрийн мэнд май торт">
+        </div>
+    </div>
+
+    <script>
+        const correctAnswers = ["бороо", "ирлээ"];
+
+        function checkAnswers() {
+            const guess1 = document.getElementById('guess1').value.trim();
+            const guess2 = document.getElementById('guess2').value.trim();
+            const result = document.getElementById('result');
+            const rewardImage = document.getElementById('rewardImage');
+            
+            if (guess1 === correctAnswers[0] && guess2 === correctAnswers[1]) {
+                result.textContent = "Зөв байна! Май торт!";
+                result.style.color = "green";
+                rewardImage.style.display = "block"; // Show the image as a reward
+            } else {
+                result.textContent = "Дахиад үздэ!";
+                result.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
